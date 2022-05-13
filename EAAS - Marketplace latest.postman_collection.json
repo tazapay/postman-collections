@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "93ba6803-7be7-403f-9569-69e3797a7285",
+		"_postman_id": "000e607c-03df-4249-b373-53ed4cf35904",
 		"name": "EAAS - Marketplace latest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2408,47 +2408,260 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Refund Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesskey",
+								"value": "{{access_key}}",
+								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{tazapay_signature}}",
+								"type": "text"
+							},
+							{
+								"key": "salt",
+								"value": "{{tazapay_salt}}",
+								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{request_timestamp}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/payment/refund/status?txn_no=2022-28187",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payment",
+								"refund",
+								"status"
+							],
+							"query": [
+								{
+									"key": "reference_id",
+									"value": "14d81c33-70b6-40eb-9de4-35122e276186",
+									"disabled": true
+								},
+								{
+									"key": "txn_no",
+									"value": "2022-28187"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "Health Check",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "accesskey",
-						"value": "{{access_key}}",
-						"type": "text"
+			"name": "KYB v2",
+			"item": [
+				{
+					"name": "Create kyb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesskey",
+								"value": "{{access_key}}",
+								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{tazapay_signature}}",
+								"type": "text"
+							},
+							{
+								"key": "salt",
+								"value": "{{tazapay_salt}}",
+								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{request_timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"account_id\":\"78e2fde6-a3bb-410c-99b7-56773fea7da8\",\n   \"application_type\":\"Business\",\n   \"entity_name\":\"Company\",\n   \"submit\":false,\n   \"business\":{\n      \"name\":\"india mart api integration\",\n      \"type\":\"\",\n      \"incorporation_no\":\"GST-2344566\",\n      \"address_line_1\":\"Block.1, abc\",\n      \"address_line_2\":\"XYZ area\",\n      \"city\":\"Chennai\",\n      \"state\":\"TamilNadu\",\n      \"country\":\"India\",\n      \"zip_code\":\"600069\",\n      \"trading_name\":\"\",\n      \"category\":[\n         \n      ],\n      \"sub_category\":\"\",\n      \"years_in_business\":\"\",\n      \"annual_turnover\":\"\",\n      \"website\":\"\",\n      \"date_of_incorporation\":\"\",\n      \"custom_attrs\":{\n         \"transaction_id\":\"123\"\n      },\n      \"documents\":[\n         {\n            \"description\":\"Business Registration Proof\",\n            \"file_name\":\"busRegProof.png\",\n            \"name\":\"Business Registration Proof\",\n            \"proof_type\":\"Business\",\n            \"type\":\"Other\",\n            \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\"\n         },\n         {\n            \"description\":\"Business Address Proof\",\n            \"file_name\":\"busAddressProof.png\",\n            \"name\":\"Business Address Proof\",\n            \"proof_type\":\"Address\",\n            \"tag\":\"addressProofDoc\",\n            \"type\":\"Other\",\n            \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\"\n         }\n      ]\n   },\n   \"representative\":{\n      \"first_name\":\"Steve\",\n      \"last_name\":\"Rogers\",\n      \"roles\":[\"Director\"],\n      \"dob\":\"\",\n      \"address_line_1\":\"add 1\",\n      \"address_line_2\":\"add 2\",\n      \"city\":\"Chennai\",\n      \"state\":\"TamilNadu\",\n      \"country\":\"India\",\n      \"zip_code\":\"600069\",\n      \"contact_code\":\"+91\",\n      \"mobile_number\":\"9090929229\",\n      \"nationality\":\"\",\n      \"ownership_percent\":50,\n      \"documents\":[\n         {\n            \"proof_type\":\"Identity\",\n            \"type\":\"Passport\",\n            \"name\":\"Address proof\",\n            \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n            \"file_name\":\"passportback.jpg\",\n            \"description\":\"representative passport\",\n            \"tag\":\"identityProofTypeFrontDoc\"\n         },\n         {\n            \"proof_type\":\"Identity\",\n            \"type\":\"Passport\",\n            \"name\":\"Address proof\",\n            \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n            \"file_name\":\"passportback.jpg\",\n            \"description\":\"representative passport\",\n            \"tag\":\"identityProofTypeBackDoc\"\n         }\n      ]\n   },\n   \"owner\":[\n      {\n         \"first_name\":\"Tony\",\n         \"last_name\":\"Stark\",\n         \"roles\":[\"Shareholder\"],\n         \"dob\":\"\",\n         \"address_line_1\":\"add 1\",\n         \"address_line_2\":\"add 2\",\n         \"city\":\"Chennai\",\n         \"state\":\"TamilNadu\",\n         \"country\":\"India\",\n         \"zip_code\":\"600069\",\n         \"contact_code\":\"+91\",\n         \"mobile_number\":\"9090929229\",\n         \"nationality\":\"\",\n         \"ownership_percent\":25,\n         \"documents\":[\n            {\n               \"proof_type\":\"Identity\",\n               \"type\":\"Passport\",\n               \"name\":\"Address proof\",\n               \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n               \"file_name\":\"passportfront.jpg\",\n               \"description\":\"representative passport\",\n               \"tag\":\"identityProofTypeFrontDoc\"\n            },\n            {\n               \"proof_type\":\"Identity\",\n               \"type\":\"Passport\",\n               \"name\":\"Address proof\",\n               \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n               \"file_name\":\"passportback.jpg\",\n               \"description\":\"representative passport\",\n               \"tag\":\"identityProofTypeBackDoc\"\n            }\n         ]\n      },\n      {\n         \"first_name\":\"Thor\",\n         \"last_name\":\"Odinson\",\n         \"roles\":[\"Shareholder\"],\n         \"dob\":\"\",\n         \"address_line_1\":\"add 1\",\n         \"address_line_2\":\"add 2\",\n         \"city\":\"Chennai\",\n         \"state\":\"TamilNadu\",\n         \"country\":\"India\",\n         \"zip_code\":\"600069\",\n         \"contact_code\":\"+91\",\n         \"mobile_number\":\"9090929229\",\n         \"nationality\":\"\",\n         \"ownership_percent\":25,\n         \"documents\":[\n            {\n               \"proof_type\":\"Identity\",\n               \"type\":\"Passport\",\n               \"name\":\"Address proof\",\n               \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n               \"file_name\":\"passportfront.jpg\",\n               \"description\":\"representative passport\"\n            },\n            {\n               \"proof_type\":\"Identity\",\n               \"type\":\"Passport\",\n               \"name\":\"Address proof\",\n               \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n               \"file_name\":\"passportback.jpg\",\n               \"description\":\"representative passport\",\n               \"tag\":\"identityProofTypeBackDoc\"\n            }\n         ]\n      }\n   ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_url}}/v2/kyb",
+							"host": [
+								"{{sandbox_url}}"
+							],
+							"path": [
+								"v2",
+								"kyb"
+							]
+						}
 					},
-					{
-						"key": "signature",
-						"value": "{{tazapay_signature}}",
-						"type": "text"
+					"response": []
+				},
+				{
+					"name": "Get API",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesskey",
+								"value": "{{access_key}}",
+								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{tazapay_signature}}",
+								"type": "text"
+							},
+							{
+								"key": "salt",
+								"value": "{{tazapay_salt}}",
+								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{request_timestamp}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{sandbox_url}}/v2/kyb/20c749d6-9341-4aa5-a363-80d17c15ee40",
+							"host": [
+								"{{sandbox_url}}"
+							],
+							"path": [
+								"v2",
+								"kyb",
+								"20c749d6-9341-4aa5-a363-80d17c15ee40"
+							]
+						}
 					},
-					{
-						"key": "salt",
-						"value": "{{tazapay_salt}}",
-						"type": "text"
+					"response": []
+				},
+				{
+					"name": "update kyb",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesskey",
+								"value": "{{access_key}}",
+								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{tazapay_signature}}",
+								"type": "text"
+							},
+							{
+								"key": "salt",
+								"value": "{{tazapay_salt}}",
+								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{request_timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": \"78e2fde6-a3bb-410c-99b7-56773fea7da8\",\n    \"application_state\": \"not_started\",\n    \"entity_name\": \"Company\",\n    \"application_type\": \"Business\",\n    \"business\": {\n        \"id\": \"f891cc0e-cfba-41c4-9e82-fdc702fd2564\",\n        \"name\": \"india mart api integration v2\",\n        \"type\": null,\n        \"same_operating_address\": false,\n        \"incorporation_no\": \"GST-2344566\",\n        \"address_line_1\": \"Block.1, abc\",\n        \"address_line_2\": \"XYZ area\",\n        \"city\": \"Chennai\",\n        \"state\": \"TamilNadu\",\n        \"country\": \"India\",\n        \"zip_code\": \"600069\",\n        \"entity_type\": \"\",\n        \"entity_name\": null,\n        \"trading_name\": \"\",\n        \"category\": null,\n        \"sub_category\": \"\",\n        \"years_in_business\": \"\",\n        \"annual_turnover\": \"\",\n        \"website\": \"\",\n        \"date_of_incorporation\": null,\n        \"custom_attrs\": {\n            \"transaction_id\": \"123\"\n        },\n        \"documents\": [\n            {\n                \"id\": \"438433c9-4ea9-40f9-a389-bea3bcf8f0f9\",\n                \"proof_type\": \"Business\",\n                \"type\": \"Other\",\n                \"tag\": \"\",\n                \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n                \"file_name\": \"busRegProof.png\",\n                \"name\": \"Business Registration Proof\",\n                \"description\": \"Business Registration Proof\"\n            },\n            {\n                \"id\": \"8166009f-c1d4-4a49-b37f-991dfaf97ab1\",\n                \"proof_type\": \"Address\",\n                \"type\": \"Other\",\n                \"tag\": \"addressProofDoc\",\n                \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n                \"file_name\": \"busAddressProof.png\",\n                \"name\": \"Business Address Proof\",\n                \"description\": \"Business Address Proof\"\n            }\n        ],\n        \"description\": \"\"\n    },\n    \"representative\": {\n        \"id\": \"ad44d3b3-b3a2-407f-9f98-d277b7e7142a\",\n        \"first_name\": \"Steve\",\n        \"last_name\": \"Rogers\",\n        \"same_operating_address\": false,\n        \"dob\": \"\",\n        \"address_line_1\": \"add 1\",\n        \"address_line_2\": \"add 2\",\n        \"city\": \"Chennai\",\n        \"state\": \"TamilNadu\",\n        \"country\": \"India\",\n        \"zip_code\": \"600069\",\n        \"mobile_number\": \"9090929229\",\n        \"nationality\": \"\",\n        \"ownership_percent\": 50,\n        \"ownership_status\": false,\n        \"type\": \"Representative\",\n        \"roles\": [],\n        \"documents\": [\n            {\n                \"id\": \"bcdae991-83be-4f75-a09b-e61df815eba2\",\n                \"proof_type\": \"Identity\",\n                \"type\": \"Passport\",\n                \"tag\": \"identityProofTypeFrontDoc\",\n                \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n                \"file_name\": \"passportback.jpg\",\n                \"name\": \"Address proof\",\n                \"description\": \"representative passport\"\n            },\n            {\n                \"id\": \"f6c3d79b-ef49-4eca-a634-a5f9e4c70edc\",\n                \"proof_type\": \"Identity\",\n                \"type\": \"Passport\",\n                \"tag\": \"identityProofTypeBackDoc\",\n                \"url\":\"https://i.pinimg.com/736x/53/af/1a/53af1ad615ee4f38e482d77b84eacb44.jpg\",\n                \"file_name\": \"passportback.jpg\",\n                \"name\": \"Address proof\",\n                \"description\": \"representative passport\"\n            }\n        ],\n        \"email\": \"\",\n        \"contact_code\": \"+91\",\n        \"website\": \"\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_url}}/v2/kyb/20c749d6-9341-4aa5-a363-80d17c15ee40",
+							"host": [
+								"{{sandbox_url}}"
+							],
+							"path": [
+								"v2",
+								"kyb",
+								"20c749d6-9341-4aa5-a363-80d17c15ee40"
+							]
+						}
 					},
-					{
-						"key": "timestamp",
-						"value": "{{request_timestamp}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{url}}/v1/healthcheck",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"v1",
-						"healthcheck"
-					]
+					"response": []
+				},
+				{
+					"name": "KYB status API",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesskey",
+								"value": "{{access_key}}",
+								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{tazapay_signature}}",
+								"type": "text"
+							},
+							{
+								"key": "salt",
+								"value": "{{tazapay_salt}}",
+								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{request_timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_url}}/v2/kyb/verified?account_id=78e2fde6-a3bb-410c-99b7-56773fea7da8",
+							"host": [
+								"{{sandbox_url}}"
+							],
+							"path": [
+								"v2",
+								"kyb",
+								"verified"
+							],
+							"query": [
+								{
+									"key": "account_id",
+									"value": "78e2fde6-a3bb-410c-99b7-56773fea7da8"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
