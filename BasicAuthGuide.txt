@@ -1,0 +1,38 @@
+For Authorizing the requests to the tazapay platform, we use Basic Authorization.
+Every request need to have an Header key: 'Authorization'
+The above header key needs to have the access and secret keys separated by ':'' with base64 encoding
+In the Basic Authorization, the accessKey acts as a username and secretKey as password
+
+Example: Authorization: Basic WlZYWjJKWjYwQjZQSU5NVjdCRFE6QXRIaUNiVWlDd1RzY3VKb0ZYQmFEdEVqamU1OGFSVUZHemMyZTR4a3g5SlJ5ZDBnNVZCVXd0TUdzWDV3cXlnaQ==
+
+Below is a sample code in Go, for your reference.
+
+package main
+
+import (
+  "io/ioutil"
+  "log"
+  "net/http"
+)
+
+func main() {
+  basicAuth()
+}
+
+func basicAuth() string {
+  
+  var accessKey string = "foo" 
+  var secretKey string = "bar" 
+
+  client := &http.Client{}
+  req, err := http.NewRequest("GET", "http://mydomain.com", nil)
+  req.SetBasicAuth(accessKey, secretKey)
+
+  resp, err := client.Do(req)
+  if err != nil {
+    log.Fatal(err)
+  }
+  bodyText, err := ioutil.ReadAll(resp.Body)
+  s := string(bodyText)
+  return s
+}
