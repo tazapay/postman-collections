@@ -1927,7 +1927,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"txn_no\": \"2212-383595\",\n    \"complete_url\": \"https://www.google.com/\",\n    \"error_url\": \"https://duckduckgo.com/\",\n    \"callback_url\": \"https://eo23xhgu2u8mbkd.m.pipedream.net\"\n}",
+							"raw": "{\n    \"txn_no\": \"2212-383595\",\n    \"complete_url\": \"https://www.google.com/\",\n    \"error_url\": \"https://duckduckgo.com/\",\n    \"callback_url\": \"https://eo23xhgu2u8mbkd.m.pipedream.net\",\n    \"payment_methods\": [\"Card\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
